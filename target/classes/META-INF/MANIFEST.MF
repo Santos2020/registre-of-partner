@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: carlo
+Build-Jdk: 15.0.2
+Implementation-Title: registre-of-partner
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: br.com.registros
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/registre-of-partner
+Created-By: Maven Integration for Eclipse
+
