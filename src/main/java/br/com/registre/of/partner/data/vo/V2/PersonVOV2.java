@@ -3,6 +3,9 @@ package br.com.registre.of.partner.data.vo.V2;
 import java.io.Serializable;
 import java.util.Date;
 
+//import com.fasterxml.jackson.annotation.JsonPropertyOrder;//
+
+//@JsonPropertyOrder({"id","address", "firstName", "lastName", "gender"})//
 public class PersonVOV2 implements Serializable {
 	private static final long serialVersionUID = 1L;
 
