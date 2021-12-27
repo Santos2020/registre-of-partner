@@ -16,61 +16,61 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.registre.of.partner.data.vo.PersonVO;
-import br.com.registre.of.partner.services.PersonServices;
+import br.com.registre.of.partner.data.vo.V2.UsuarioVO;
+import br.com.registre.of.partner.services.UsuarioServices;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 
-//@Api(value = "PersonEndpoint", description = "REST API for Person", tags = { "PersonEndpoint" })
-@Api(tags = "PersonEndpoint")
+
+@Api(tags = "UsuarioEndpoint") 
 @RestController
-@RequestMapping("/api/person/v2")
-public class PersonController {
+@RequestMapping("/api/usuario/v1")
+public class UsuarioController {
 	
 	@Autowired
-	private PersonServices service;
+	private UsuarioServices service;
 	
-	@ApiOperation(value = "Find all people" ) 
+	@ApiOperation(value = "Find all usuario" )
 	@GetMapping(produces = { "application/json", "application/xml", "application/x-yaml" })
-	public List<PersonVO> findAll() {
-		List<PersonVO> persons =  service.findAll();
-		persons
+	public List<UsuarioVO> findAll() {
+		List<UsuarioVO> usuarios =  service.findAll();
+		usuarios
 			.stream()
 			.forEach(p -> p.add(
-					linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()
+					linkTo(methodOn(UsuarioController.class).findById(p.getKey())).withSelfRel()
 				)
 			);
-		return persons;
+		return usuarios;
 	}	
 	
-	@ApiOperation(value = "Find a specific person by your ID" )
+	@ApiOperation(value = "Find a specific usuario by your ID" )
 	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml", "application/x-yaml" })
-	public PersonVO findById(@PathVariable("id") Long id) {
-		PersonVO personVO = service.findById(id);
-		personVO.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
-		return personVO;
+	public UsuarioVO findById(@PathVariable("id") Long id) {
+		UsuarioVO usuarioVO = service.findById(id);
+		usuarioVO.add(linkTo(methodOn(UsuarioController.class).findById(id)).withSelfRel());
+		return usuarioVO;
 	}	
 	
-	@ApiOperation(value = "Create a new person") 
+	@ApiOperation(value = "Create a new usuario")
 	@PostMapping(produces = { "application/json", "application/xml", "application/x-yaml" }, 
 			consumes = { "application/json", "application/xml", "application/x-yaml" })
-	public PersonVO create(@RequestBody PersonVO person) {
-		PersonVO personVO = service.create(person);
-		personVO.add(linkTo(methodOn(PersonController.class).findById(personVO.getKey())).withSelfRel());
-		return personVO;
+	public UsuarioVO create(@RequestBody UsuarioVO usuario) {
+		UsuarioVO usuarioVO = service.create(usuario);
+		usuarioVO.add(linkTo(methodOn(UsuarioController.class).findById(usuarioVO.getKey())).withSelfRel());
+		return usuarioVO;
 	}
 	
-	@ApiOperation(value = "Update a specific person")
+	@ApiOperation(value = "Update a specific ususario")
 	@PutMapping(produces = { "application/json", "application/xml", "application/x-yaml" }, 
 			consumes = { "application/json", "application/xml", "application/x-yaml" })
-	public PersonVO update(@RequestBody PersonVO person) {
-		PersonVO personVO = service.update(person);
-		personVO.add(linkTo(methodOn(PersonController.class).findById(personVO.getKey())).withSelfRel());
-		return personVO;
+	public UsuarioVO update(@RequestBody UsuarioVO usuario) {
+		UsuarioVO UsuarioVO = service.update(usuario);
+		UsuarioVO.add(linkTo(methodOn(UsuarioController.class).findById(UsuarioVO.getKey())).withSelfRel());
+		return usuario;
 	}	
 	
-	@ApiOperation(value = "Delete a specific person by your ID")
+	@ApiOperation(value = "Delete a specific usuario by your ID")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") Long id) {
 		service.delete(id);
