@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import org.springframework.hateoas.ResourceSupport;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dozermapper.core.Mapping;
 
 //import com.fasterxml.jackson.annotation.JsonProperty;//
@@ -16,6 +17,7 @@ public class PersonVO extends ResourceSupport implements Serializable{
 	private static final long serialVersionUID = 1L;
 
     @Mapping("id")
+    @JsonProperty("id")
 	private Long key;
 	//@JsonProperty("firts_name")//
 	private String firstName;
