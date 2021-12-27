@@ -1,4 +1,4 @@
-package br.com.registre.of.partner.model;
+package br.com.registre.of.partner.data.model;
 
 import java.io.Serializable;
 
