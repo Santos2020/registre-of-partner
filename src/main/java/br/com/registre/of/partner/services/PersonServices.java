@@ -17,7 +17,6 @@ import br.com.registre.of.partner.repository.PersonRepository;
 public class PersonServices {
 	
 	@Autowired
-	
 	PersonRepository repository;
 	
 	@Autowired
